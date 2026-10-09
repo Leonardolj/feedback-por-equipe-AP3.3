@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Galeria de Fotos</title>
+
+        <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================
+    RESET
+    ========================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================
+    PÁGINA
+    ========================= */
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+
+        background: #f1f5f9;
+
+        color: #1e293b;
+
+        min-height: 100vh;
+    }
+
+
+    /* =========================
+    CONTAINER
+    ========================= */
+
+    .galeria-container {
+        width: 92%;
+        max-width: 1400px;
+
+        margin: 40px auto;
+    }
+
+    /* =========================
+    CABEÇALHO
+    ========================= */
+
+    .galeria-header {
+        margin-bottom: 30px;
+    }
+
+    .galeria-header h1 {
+        font-size: 32px;
+
+        color: #0f172a;
+
+        margin-bottom: 8px;
+    }
+
+    .galeria-header p {
+        color: #64748b;
+
+        font-size: 16px;
+    }
+
+
+    /* =========================
+    GALERIA
+    ========================= */
+
+    .galeria {
+        display: grid;
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+        gap: 18px;
+    }
+
+
+    /* =========================
+    FOTO
+    ========================= */
+
+    .foto {
+        position: relative;
+
+        height: 200px;
+
+        overflow: hidden;
+
+        border-radius: 12px;
+
+        background: #e2e8f0;
+
+        box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.08);
+
+        cursor: pointer;
+    }
+
+
+    /* =========================
+    IMAGEM
+    ========================= */
+
+    .foto img {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: cover;
+
+        transition:
+            transform 0.4s ease,
+            filter 0.4s ease;
+    }
+
+
+    /* =========================
+    EFEITO HOVER
+    ========================= */
+
+    .foto:hover img {
+        transform: scale(1.08);
+
+        filter: brightness(0.75);
+    }
+
+
+    /* =========================
+    LEGENDA
+    ========================= */
+
+    .foto figcaption {
+        position: absolute;
+
+        left: 0;
+        bottom: 0;
+
+        width: 100%;
+
+        padding: 12px;
+
+        color: white;
+
+        font-size: 14px;
+
+        font-weight: bold;
+
+        background:
+            linear-gradient(
+                transparent,
+                rgba(0, 0, 0, 0.75)
+            );
+
+        opacity: 0;
+
+        transform: translateY(10px);
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    .foto:hover figcaption {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+
+    /* =========================
+    TABLET
+    ========================= */
+
+    @media (max-width: 1100px) {
+
+        .galeria {
+            grid-template-columns:
+                repeat(4, 1fr);
+        }
+
+    }
+
+
+    /* =========================
+    TABLET PEQUENO
+    ========================= */
+
+    @media (max-width: 800px) {
+
+        .galeria {
+            grid-template-columns:
+                repeat(3, 1fr);
+        }
+
+        .foto {
+            height: 180px;
+        }
+
+    }
+
+
+    /* =========================
+    CELULAR
+    ========================= */
+
+    @media (max-width: 600px) {
+
+        .galeria-container {
+            width: 94%;
+
+            margin: 25px auto;
+        }
+
+        .galeria-header h1 {
+            font-size: 26px;
+        }
+
+        .galeria {
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+        .foto {
+            height: 150px;
+
+            border-radius: 9px;
+        }
+
+        .foto figcaption {
+            opacity: 1;
+
+            transform: translateY(0);
+
+            padding: 8px;
+
+            font-size: 12px;
+        }
+
+    }
+
+
+    /* =========================
+    CELULAR PEQUENO
+    ========================= */
+
+    @media (max-width: 380px) {
+
+        .galeria {
+            grid-template-columns: 1fr;
+        }
+
+        .foto {
+            height: 220px;
+        }
+
+    }
+
+
+    /* =========================
+BARRA DE PESQUISA
+========================= */
+
+.pesquisa-container {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto 25px;
+}
+
+#pesquisa {
+    width: 100%;
+    padding: 15px 20px;
+
+    font-size: 16px;
+    color: #1e293b;
+
+    background: #ffffff;
+
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+
+    outline: none;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+    transition: 
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#pesquisa:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+#pesquisa::placeholder {
+    color: #94a3b8;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <h1>EWERTON E SÉRGIO</h1><br>
+     <p>ROTA (2) TOTAL DE APARELHOS: 277</p><br>
+    <p>higienização mês de setembro total: 26</p><br>
+
+    <div class="pesquisa-container">
+    <input 
+        type="text" 
+        id="pesquisa" 
+        placeholder="🔍 Pesquisar por QR Code, unidade ou local..."
+        autocomplete="off"
+    >
+</div>
+
+      <h1> higiênização mês de setembro de <date>01/09 a 30/09/2026</date></h1>
+   <section class="galeria">
+
+    <figure class="foto">
+        <a href="pastahigienizacao/ewerton 1.jpeg 1.jpeg" target="_blank">
+            <img src="pastahigienizacao/ewerton 2.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1085 - farmacia - pedro fernandes</figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao/ewerton3.jpeg" target="_blank">
+            <img src="pastahigienizacao/ewerton3.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 2050 - sylvio - sala dos agentes</figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao/ewerton 3.jpeg" target="_blank">
+            <img src="pastahigienizacao/ewerton 3.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1162 - epitácio observação</figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/sylvio largo do senhor 4836.jpeg" target="_blank">
+            <img src="pastahigienizacao/sylvio largo do senhor 4836.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 4836 - largo do senhor - sylvio</figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao/sylvio brauner almoxarifado 2028.jpeg" target="_blank">
+            <img src="pastahigienizacao/sylvio brauner almoxarifado 2028.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 2028 - almoxarifado  sylvio brauner</figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao/pedro fernandes imunização 1080.jpeg" target="_blank">
+            <img src="pastahigienizacao/pedro fernandes imunização 1080.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1080 - imunização - pedro fernandes</figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao/pedro fenendes farmacia 1886.jpeg" target="_blank">
+            <img src="pastahigienizacao/pedro fenendes farmacia 1886.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode:1886 - farmácia </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao/consultorio 2 clementino 1841.jpeg" target="_blank">
+            <img src="pastahigienizacao/consultorio 2 clementino 1841.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode:1841 - consultório 2 - clementino </figcaption>
+    </figure>
+
+    
+    <figure class="foto">
+        <a href="pastahigienizacao/CLEMENTINO LUIZA DE CARVALHO 1838.jpeg" target="_blank">
+            <img src="pastahigienizacao/CLEMENTINO LUIZA DE CARVALHO 1838.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1838 - luiza de carvalho - clementino</figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao/clementino consultorio 22 - 1839.jpeg" target="_blank">
+            <img src="pastahigienizacao/clementino consultorio 22 - 1839.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1839 - consultório 22 - clementino </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao/ana maria sala dos agentes 0952.jpeg" target="_blank">
+            <img src="pastahigienizacao/ana maria sala dos agentes 0952.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 0952 - sala dos agentes - ana maria</figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao/ana maria procedimento 0951.jpeg" target="_blank">
+            <img src="pastahigienizacao/ana maria procedimento 0951.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode:0951 procedimentos - ana maria  </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/clementino chefia da odonto 1840 .jpeg" target="_blank">
+            <img src="pastahigienizacao/clementino chefia da odonto 1840 .jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode:1840 - chefia da odonto - clementino fraga  </figcaption>
+    </figure>
+
+    
+     <figure class="foto">
+        <a href="pastahigienizacao/epitacio 1161 exames laboratoriais.jpeg" target="_blank">
+            <img src="pastahigienizacao/epitacio 1161 exames laboratoriais.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1161 - exames laboratóriais - epitacio </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/epitacio 1173 saude bucal.jpeg" target="_blank">
+            <img src="pastahigienizacao/epitacio 1173 saude bucal.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1173 - saúde bucal - epitacio </figcaption>
+    </figure>
+
+
+     <figure class="foto">
+        <a href="pastahigienizacao/brinquedoteca 2579 sylvio brauner.jpeg" target="_blank">
+            <img src="pastahigienizacao/brinquedoteca 2579 sylvio brauner.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 2579 - brinquedoteca - sylvio brauner </figcaption>
+    </figure>
+
+
+     <figure class="foto">
+        <a href="pastahigienizacao/acolhimento pedra 5091 sylvio brauner.jpeg" target="_blank">
+            <img src="pastahigienizacao/acolhimento pedra 5091 sylvio brauner.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 5091 - acolhimento - sylvio brauner </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/ana maria 4549 administração.jpeg" target="_blank">
+            <img src="pastahigienizacao/ana maria 4549 administração.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 4549 - administração - ana maria </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/ana maria 0929 esterilização.jpeg" target="_blank">
+            <img src="pastahigienizacao/ana maria 0929 esterilização.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 0929 - esterilização - ana maria </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/ana maria 0946 raiox.jpeg" target="_blank">
+            <img src="pastahigienizacao/ana maria 0946 raiox.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 0946 - raio-x - ana maria </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/pedro fernandes 5435 almoxarifado.jpeg" target="_blank">
+            <img src="pastahigienizacao/pedro fernandes 5435 almoxarifado.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 5435 - almoxarifado  - pedro fernandes </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/pedro fernandes 1107 observação.jpeg" target="_blank">
+            <img src="pastahigienizacao/pedro fernandes 1107 observação.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1107 - observação clinica - pedro fernandes </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/souza 1500 - fisioterapia 1.jpeg" target="_blank">
+            <img src="pastahigienizacao2/souza 1500 - fisioterapia 1.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1500 - fisioterapia 1 - souza marquês </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/souza marques 1581 - sala 213.jpeg" target="_blank">
+            <img src="pastahigienizacao2/souza marques 1581 - sala 213.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1581 - sala 213 - souza marquês </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao2/epitacio 6025 saude da criança.jpeg" target="_blank">
+            <img src="pastahigienizacao2/epitacio 6025 saude da criança.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 6025 - saúde da criança - epitacio soares </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/portus 2015 farmacia.jpeg" target="_blank">
+            <img src="pastahigienizacao2/portus 2015 farmacia.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 2015 - farmácia - portus e quitanda </figcaption>
+    </figure>
+
+    
+
+</section>
+
+<br>
+
+<div>
+    <br>
+    <h1>higiênização mês de outubro  <date>01/10 a 31/10/2026</date></h1>
+    <p>ROTA (2) TOTAL DE APARELHOS: 277</p><br>
+    <p>higienização mês de outubro total: 05</p><br>
+
+    <section class="galeria">
+
+    
+        <figure class="foto">
+        <a href="higieneoutubro/ana maria 0945 ultrassonografia.jpeg" target="_blank">
+            <img src="higieneoutubro/ana maria 0945 ultrassonografia.jpeg" alt="atualizando!!!">
+        </a>
+        <figcaption>qrcode: 0945 - ultrassonografia - ana maria </figcaption>
+        </figure>
+
+        <figure class="foto">
+        <a href="pastahigienizacao2/clementino 1842 saude bucal.jpeg" target="_blank">
+            <img src="pastahigienizacao2/clementino 1842 saude bucal.jpeg" alt="atualizando!!!">
+        </a>
+        <figcaption>qrcode: 1842 - saúde bucal - clementino fraga </figcaption>
+        </figure>
+
+        <figure class="foto">
+            <a href="pastahigienizacao2/souza 1510 acolhimento oftalmo.jpeg" target="_blank">
+                    <img src="pastahigienizacao2/souza 1510 acolhimento oftalmo.jpeg" alt="atualizando!!!">
+                </a>
+            <figcaption>qrcode: 1510 - acolhimento oftalmológico - souza marquês </figcaption>
+        </figure>
+
+         <figure class="foto">
+            <a href="pastahigienizacao2/pedro fernandes 3605 acolhimento mae bebe.jpeg" target="_blank">
+                    <img src="pastahigienizacao2/pedro fernandes 3605 acolhimento mae bebe.jpeg" alt="atualizando!!!">
+                </a>
+            <figcaption>qrcode: 3605 - acolhimento de mãe e bebê - pedro fernandes </figcaption>
+        </figure>
+
+         <figure class="foto">
+            <a href="pastahigienizacao2/ana maria 0939 curativos.jpeg" target="_blank">
+                    <img src="pastahigienizacao2/ana maria 0939 curativos.jpeg" alt="atualizando!!!">
+                </a>
+            <figcaption>qrcode: 0939 - curativos - ana maria </figcaption>
+        </figure>
+
+         <figure class="foto">
+            <a href="pastahigienizacao2/sylvio brauner 2025 imunização.jpeg" target="_blank">
+                    <img src="pastahigienizacao2/sylvio brauner 2025 imunização.jpeg" alt="atualizando!!!">
+                </a>
+            <figcaption>qrcode: 2025 - imunização - sylvio brauner </figcaption>
+        </figure>
+
+
+    </section>
+</div>
+
+</body>
+<script>
+    const pesquisa = document.getElementById("pesquisa");
+    const fotos = document.querySelectorAll(".foto");
+
+    pesquisa.addEventListener("input", function () {
+
+        const termo = this.value
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        fotos.forEach(function (foto) {
+
+            const texto = foto.textContent
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+
+            if (texto.includes(termo)) {
+                foto.style.display = "";
+            } else {
+                foto.style.display = "none";
+            }
+
+        });
+
+    });
+</script>
+
+</html>

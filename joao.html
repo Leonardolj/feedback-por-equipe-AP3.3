@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Galeria de Fotos</title>
+
+        <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================
+    RESET
+    ========================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================
+    PÁGINA
+    ========================= */
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+
+        background: #f1f5f9;
+
+        color: #1e293b;
+
+        min-height: 100vh;
+    }
+
+
+    /* =========================
+    CONTAINER
+    ========================= */
+
+    .galeria-container {
+        width: 92%;
+        max-width: 1400px;
+
+        margin: 40px auto;
+    }
+
+    /* =========================
+    CABEÇALHO
+    ========================= */
+
+    .galeria-header {
+        margin-bottom: 30px;
+    }
+
+    .galeria-header h1 {
+        font-size: 32px;
+
+        color: #0f172a;
+
+        margin-bottom: 8px;
+    }
+
+    .galeria-header p {
+        color: #64748b;
+
+        font-size: 16px;
+    }
+
+
+    /* =========================
+    GALERIA
+    ========================= */
+
+    .galeria {
+        display: grid;
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+        gap: 18px;
+    }
+
+
+    /* =========================
+    FOTO
+    ========================= */
+
+    .foto {
+        position: relative;
+
+        height: 200px;
+
+        overflow: hidden;
+
+        border-radius: 12px;
+
+        background: #e2e8f0;
+
+        box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.08);
+
+        cursor: pointer;
+    }
+
+
+    /* =========================
+    IMAGEM
+    ========================= */
+
+    .foto img {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: cover;
+
+        transition:
+            transform 0.4s ease,
+            filter 0.4s ease;
+    }
+
+
+    /* =========================
+    EFEITO HOVER
+    ========================= */
+
+    .foto:hover img {
+        transform: scale(1.08);
+
+        filter: brightness(0.75);
+    }
+
+
+    /* =========================
+    LEGENDA
+    ========================= */
+
+    .foto figcaption {
+        position: absolute;
+
+        left: 0;
+        bottom: 0;
+
+        width: 100%;
+
+        padding: 12px;
+
+        color: white;
+
+        font-size: 14px;
+
+        font-weight: bold;
+
+        background:
+            linear-gradient(
+                transparent,
+                rgba(0, 0, 0, 0.75)
+            );
+
+        opacity: 0;
+
+        transform: translateY(10px);
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    .foto:hover figcaption {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+
+    /* =========================
+    TABLET
+    ========================= */
+
+    @media (max-width: 1100px) {
+
+        .galeria {
+            grid-template-columns:
+                repeat(4, 1fr);
+        }
+
+    }
+
+
+    /* =========================
+    TABLET PEQUENO
+    ========================= */
+
+    @media (max-width: 800px) {
+
+        .galeria {
+            grid-template-columns:
+                repeat(3, 1fr);
+        }
+
+        .foto {
+            height: 180px;
+        }
+
+    }
+
+
+    /* =========================
+    CELULAR
+    ========================= */
+
+    @media (max-width: 600px) {
+
+        .galeria-container {
+            width: 94%;
+
+            margin: 25px auto;
+        }
+
+        .galeria-header h1 {
+            font-size: 26px;
+        }
+
+        .galeria {
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+        .foto {
+            height: 150px;
+
+            border-radius: 9px;
+        }
+
+        .foto figcaption {
+            opacity: 1;
+
+            transform: translateY(0);
+
+            padding: 8px;
+
+            font-size: 12px;
+        }
+
+    }
+
+
+    /* =========================
+    CELULAR PEQUENO
+    ========================= */
+
+    @media (max-width: 380px) {
+
+        .galeria {
+            grid-template-columns: 1fr;
+        }
+
+        .foto {
+            height: 220px;
+        }
+
+    }
+
+    /* =========================
+BARRA DE PESQUISA
+========================= */
+
+.pesquisa-container {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto 25px;
+}
+
+#pesquisa {
+    width: 100%;
+    padding: 15px 20px;
+
+    font-size: 16px;
+    color: #1e293b;
+
+    background: #ffffff;
+
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+
+    outline: none;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+    transition: 
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#pesquisa:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+#pesquisa::placeholder {
+    color: #94a3b8;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>JOÃO E MARCOS</h1><br>
+     <p>ROTA (4) TOTAL DE APARELHOS: 239</p><br>
+ <p>higienização mês de setembro total:22 </p>
+ <BR>
+ 
+    <div class="pesquisa-container">
+    <input 
+        type="text" 
+        id="pesquisa" 
+        placeholder="🔍 Pesquisar por QR Code, unidade ou local..."
+        autocomplete="off"
+    >
+</div>
+
+      <h1> higiênização mês de setembro de <date>01/09 a 30/09/2026</date></h1>
+
+   <section class="galeria">
+
+
+     <figure class="foto">
+        <a href="pastahigienizacao/flavio teste do pezinho 1914.jpeg" target="_blank">
+            <img src="pastahigienizacao/flavio teste do pezinho 1914.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode:1914 - teste do pézinho - flávio do couto </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/maria de azevedo 1355 observação.jpeg" target="_blank">
+            <img src="pastahigienizacao/maria de azevedo 1355 observação.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1355 - observação clinica - maria de azevedo </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/ultrassonorafia 1356 maria de azevedo.jpeg" target="_blank">
+            <img src="pastahigienizacao/ultrassonorafia 1356 maria de azevedo.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1356 - ultrassonografia - maria de azevedo </figcaption>
+    </figure>
+
+
+     <figure class="foto">
+        <a href="pastahigienizacao/curativos 3364 maestro celestino.jpeg" target="_blank">
+            <img src="pastahigienizacao/curativos 3364 maestro celestino.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 3364 - curativos - maestro celestino </figcaption>
+    </figure>
+
+
+     <figure class="foto">
+        <a href="pastahigienizacao/curativo 4290 nascimento gurgel.jpeg" target="_blank">
+            <img src="pastahigienizacao/curativo 4290 nascimento gurgel.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 4290 - curativos - nascimento gurgel </figcaption>
+    </figure>
+
+
+     <figure class="foto">
+        <a href="pastahigienizacao/consultorio 4 - 1990 - nascimento gurgel.jpeg 4" target="_blank">
+            <img src="pastahigienizacao/consultorio 4 - 1990 - nascimento gurgel.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1990 - consultório 4 - nascimento gurgel </figcaption>
+    </figure>
+
+
+     <figure class="foto">
+        <a href="pastahigienizacao/sala da covid 1973 nascimento.jpeg" target="_blank">
+            <img src="pastahigienizacao/sala da covid 1973 nascimento.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1973 - sala da COVID - nascimento gurgel </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/maestro copa 1269.jpeg" target="_blank">
+            <img src="pastahigienizacao/maestro copa 1269.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1269 - copa - maestro celestino </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/raimundo 1457 saude bucal.jpeg" target="_blank">
+            <img src="pastahigienizacao/raimundo 1457 saude bucal.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1457 - saúde bucal - raimundo alves </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/raimundo 1460 coleta.jpeg" target="_blank">
+            <img src="pastahigienizacao/raimundo 1460 coleta.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1460 - coleta - raimundo </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/raimundo alves 5935 sala de reunião.jpeg" target="_blank">
+            <img src="pastahigienizacao/raimundo alves 5935 sala de reunião.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 5935 - sala de reunião - raimundo alves </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao/fazenda 1878 coleta.jpeg" target="_blank">
+            <img src="pastahigienizacao/fazenda 1878 coleta.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1878 - coleta - fazenda botafogo </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao2/mario piraes 1415 acolhimento mae bebe.jpeg" target="_blank">
+            <img src="pastahigienizacao2/mario piraes 1415 acolhimento mae bebe.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1415 - acolhimento mãe-bebê - mario pires </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/mario pires - - comendador pinto.jpeg" target="_blank">
+            <img src="pastahigienizacao2/mario pires - - comendador pinto.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: xxxx - comendador pinto - mario pires </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/mario pires 1402 - ultrassonografia.jpeg" target="_blank">
+            <img src="pastahigienizacao2/mario pires 1402 - ultrassonografia.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1402 - ultrassonografia - mário pires </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/mario pires 1408 acolhimento.jpeg" target="_blank">
+            <img src="pastahigienizacao2/mario pires 1408 acolhimento.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1408 - acolhimento - mário pires </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/flavio do couto 1977 acolhimento.jpeg" target="_blank">
+            <img src="pastahigienizacao2/flavio do couto 1977 acolhimento.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 1977 - acolhimento - flávio do couto </figcaption>
+    </figure>
+
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/flavio do couto 3595 lucio jose filho.jpeg" target="_blank">
+            <img src="pastahigienizacao2/flavio do couto 3595 lucio jose filho.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 3595 - lucio freire - flávio do couto </figcaption>
+    </figure>
+
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/flavio do couto 4490 observação .jpeg" target="_blank">
+            <img src="pastahigienizacao2/flavio do couto 4490 observação .jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 4490 - observação clínica - flavio do couto </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao2/maria azevedo 5842 refeitório.jpeg" target="_blank">
+            <img src="pastahigienizacao2/maria azevedo 5842 refeitório.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 5842 - refeitório - maria de azevedo </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao2/maria de azevedo 5843 coleta.jpeg" target="_blank">
+            <img src="pastahigienizacao2/maria de azevedo 5843 coleta.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 5843 - coleta - maria de azevedo </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao2/flavio 3332 saude bucal.jpeg" target="_blank">
+            <img src="pastahigienizacao2/flavio 3332 saude bucal.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode: 3332 - saúde bucal - flávio do couto </figcaption>
+    </figure>
+
+   
+
+
+</section>
+
+<br>
+
+<div>
+    <br>
+    <h1>higiênização mês de outubro  <date>01/10 a 31/10/2026</date></h1>
+
+    <p>ROTA (4) TOTAL DE APARELHOS: 239</p><br>
+    <p>higienização mês de outubro total:05 </p>
+ <BR>
+
+    <section class="galeria">
+        <figure class="foto">
+        <a href="higieneoutubro/mario pires 1414 nasf.jpeg" target="_blank">
+            <img src="higieneoutubro/mario pires 1414 nasf.jpeg" alt="atualizando!!!">
+        </a>
+        <figcaption>qrcode: 1414 - nasf - mario pires </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="higieneoutubro/raimundo 6010 auditorio.jpeg" target="_blank">
+            <img src="higieneoutubro/raimundo 6010 auditorio.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode:6010 - auditório - raimundo </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="higieneoutubro/fazenda 5410 equipe mambucada.jpeg" target="_blank">
+            <img src="higieneoutubro/fazenda 5410 equipe mambucada.jpeg" alt="Foto do equipamento">
+        </a>
+        <figcaption>qrcode:5410 - equipe manbucaba - fazenda botafogo </figcaption>
+    </figure>
+
+     <figure class="foto">
+        <a href="pastahigienizacao2/raimundo alves 1478 consultorio paranagua.jpeg" target="_blank">
+            <img src="pastahigienizacao2/raimundo alves 1478 consultorio paranagua.jpeg" alt="atualizando!!!">
+            </a>
+        <figcaption>qrcode: 1478 - raimundo alves </figcaption>
+    </figure>
+
+    <figure class="foto">
+        <a href="pastahigienizacao2/nascimento 1999 NIR.jpeg" target="_blank">
+            <img src="pastahigienizacao2/nascimento 1999 NIR.jpeg" alt="atualizando!!!">
+            </a>
+        <figcaption>qrcode: 1999 - NIR - nascimento gurgel </figcaption>
+    </figure>
+
+
+
+    
+
+    </section>
+</div>
+
+</body>
+
+<script>
+    const pesquisa = document.getElementById("pesquisa");
+    const fotos = document.querySelectorAll(".foto");
+
+    pesquisa.addEventListener("input", function () {
+
+        const termo = this.value
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        fotos.forEach(function (foto) {
+
+            const texto = foto.textContent
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+
+            if (texto.includes(termo)) {
+                foto.style.display = "";
+            } else {
+                foto.style.display = "none";
+            }
+
+        });
+
+    });
+</script>
+</html>

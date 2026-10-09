@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Galeria de Fotos</title>
+
+        <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================
+    RESET
+    ========================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================
+    PÁGINA
+    ========================= */
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+
+        background: #f1f5f9;
+
+        color: #1e293b;
+
+        min-height: 100vh;
+    }
+
+
+    /* =========================
+    CONTAINER
+    ========================= */
+
+    .galeria-container {
+        width: 92%;
+        max-width: 1400px;
+
+        margin: 40px auto;
+    }
+
+    /* =========================
+    CABEÇALHO
+    ========================= */
+
+    .galeria-header {
+        margin-bottom: 30px;
+    }
+
+    .galeria-header h1 {
+        font-size: 32px;
+
+        color: #0f172a;
+
+        margin-bottom: 8px;
+    }
+
+    .galeria-header p {
+        color: #64748b;
+
+        font-size: 16px;
+    }
+
+
+    /* =========================
+    GALERIA
+    ========================= */
+
+    .galeria {
+        display: grid;
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+        gap: 18px;
+    }
+
+
+    /* =========================
+    FOTO
+    ========================= */
+
+    .foto {
+        position: relative;
+
+        height: 200px;
+
+        overflow: hidden;
+
+        border-radius: 12px;
+
+        background: #e2e8f0;
+
+        box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.08);
+
+        cursor: pointer;
+    }
+
+
+    /* =========================
+    IMAGEM
+    ========================= */
+
+    .foto img {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: cover;
+
+        transition:
+            transform 0.4s ease,
+            filter 0.4s ease;
+    }
+
+
+    /* =========================
+    EFEITO HOVER
+    ========================= */
+
+    .foto:hover img {
+        transform: scale(1.08);
+
+        filter: brightness(0.75);
+    }
+
+
+    /* =========================
+    LEGENDA
+    ========================= */
+
+    .foto figcaption {
+        position: absolute;
+
+        left: 0;
+        bottom: 0;
+
+        width: 100%;
+
+        padding: 12px;
+
+        color: white;
+
+        font-size: 14px;
+
+        font-weight: bold;
+
+        background:
+            linear-gradient(
+                transparent,
+                rgba(0, 0, 0, 0.75)
+            );
+
+        opacity: 0;
+
+        transform: translateY(10px);
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    .foto:hover figcaption {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+
+    /* =========================
+    TABLET
+    ========================= */
+
+    @media (max-width: 1100px) {
+
+        .galeria {
+            grid-template-columns:
+                repeat(4, 1fr);
+        }
+
+    }
+
+
+    /* =========================
+    TABLET PEQUENO
+    ========================= */
+
+    @media (max-width: 800px) {
+
+        .galeria {
+            grid-template-columns:
+                repeat(3, 1fr);
+        }
+
+        .foto {
+            height: 180px;
+        }
+
+    }
+
+
+    /* =========================
+    CELULAR
+    ========================= */
+
+    @media (max-width: 600px) {
+
+        .galeria-container {
+            width: 94%;
+
+            margin: 25px auto;
+        }
+
+        .galeria-header h1 {
+            font-size: 26px;
+        }
+
+        .galeria {
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+        .foto {
+            height: 150px;
+
+            border-radius: 9px;
+        }
+
+        .foto figcaption {
+            opacity: 1;
+
+            transform: translateY(0);
+
+            padding: 8px;
+
+            font-size: 12px;
+        }
+
+    }
+
+
+    /* =========================
+    CELULAR PEQUENO
+    ========================= */
+
+    @media (max-width: 380px) {
+
+        .galeria {
+            grid-template-columns: 1fr;
+        }
+
+        .foto {
+            height: 220px;
+        }
+
+    }
+
+
+    /* =========================
+BARRA DE PESQUISA
+========================= */
+
+.pesquisa-container {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto 25px;
+}
+
+#pesquisa {
+    width: 100%;
+    padding: 15px 20px;
+
+    font-size: 16px;
+    color: #1e293b;
+
+    background: #ffffff;
+
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+
+    outline: none;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+    transition: 
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#pesquisa:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+#pesquisa::placeholder {
+    color: #94a3b8;
+}
+
+    </style>
+</head>
+
+<body>
+   <h1>MÁX E LEANDRO</h1><br>
+   <p>ROTA (1) TOTAL DE APARELHOS: 241</p><br>
+   <p>higienização mês de setembro total: 19</p>
+
+   <div class="pesquisa-container">
+        <input 
+            type="text" 
+            id="pesquisa" 
+            placeholder="🔍 Pesquisar por QR Code, unidade ou local..."
+            autocomplete="off"
+        >
+    </div>
+
+    <div>
+          <h1> higiênização mês de setembro de <date>01/09 a 30/09/2026</date></h1>
+        <section class="galeria">
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/mario olinto  orlando leite1937.jpeg" target="_blank">
+                        <img src="pastahigienizacao/mario olinto  orlando leite1937.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode:1937 - orlando leite - mario olinto </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/herculano farmacia .jpeg" target="_blank">
+                        <img src="pastahigienizacao/herculano farmacia .jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: herculano farmácia </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/aderson fernandes cci 0839.jpeg" target="_blank">
+                        <img src="pastahigienizacao/aderson fernandes cci 0839.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode:0839 - cci- aderson fernandes </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/souza farnacia 1513.jpeg" target="_blank">
+                        <img src="pastahigienizacao/souza farnacia 1513.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode:1513 - farmácia souza marquês </figcaption>
+                </figure>
+                <figure class="foto">
+                    <a href="pastahigienizacao/souza exames laboratoriais- sem qr.jpeg" target="_blank">
+                        <img src="pastahigienizacao/souza exames laboratoriais- sem qr.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: sem qr - exames laboratoriais souza marquês</figcaption>
+                </figure>
+                <figure class="foto">
+                    <a href="pastahigienizacao/souza corredor oftalmo 1519.jpeg" target="_blank">
+                        <img src="pastahigienizacao/souza corredor oftalmo 1519.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode:1519 - corredor da oftalmologia  souza marquês</figcaption>
+                </figure>
+                <figure class="foto">
+                    <a href="pastahigienizacao/souza copa 2 - 1521.jpeg" target="_blank">
+                        <img src="pastahigienizacao/souza copa 2 - 1521.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode:1521 - copa 2 souza marquês</figcaption>
+                </figure>
+                <figure class="foto">
+                    <a href="pastahigienizacao/souza copa 1 - 5905.jpeg" target="_blank">
+                        <img src="pastahigienizacao/souza copa 1 - 5905.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode:5905 - copa 1 souza marquês</figcaption>
+                </figure>
+                <figure class="foto">
+                    <a href="pastahigienizacao/souza auditorio 2 - 5378.jpeg" target="_blank">
+                        <img src="pastahigienizacao/souza auditorio 2 - 5378.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode:5378 - auditorio 2 souza marquês</figcaption>
+                </figure>
+                <figure class="foto">
+                    <a href="pastahigienizacao/souza 1584.jpeg" target="_blank">
+                        <img src="pastahigienizacao/souza 1584.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode:1584 -  souza marquês </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/carlos nery 1011 cci.jpeg" target="_blank">
+                        <img src="pastahigienizacao/carlos nery 1011 cci.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: 1011 - cci - carlos nery </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/carlos nerys 3622 auditorio.jpeg" target="_blank">
+                        <img src="pastahigienizacao/carlos nerys 3622 auditorio.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: 3622 - auditório - carlos nery </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/mario olinto 1939 corredor saude bucal.jpeg" target="_blank">
+                        <img src="pastahigienizacao/mario olinto 1939 corredor saude bucal.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: 1939 - corredor da saúde da criança - mario olinto </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/souza 1567 equipe divino.jpeg" target="_blank">
+                        <img src="pastahigienizacao/souza 1567 equipe divino.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: 1567 - equipe divino - souza marquês </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/aderson 0832 imunização.jpeg" target="_blank">
+                        <img src="pastahigienizacao/aderson 0832 imunização.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: 0832 - imunização - aderson fernandes </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao/aderson 0831 ultrassonografia.jpeg" target="_blank">
+                        <img src="pastahigienizacao/aderson 0831 ultrassonografia.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: 0831 - ultrassonografia - aderson fernandes </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao2/souza 1584 consultorio 209.jpeg" target="_blank">
+                        <img src="pastahigienizacao2/souza 1584 consultorio 209.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: 1584 - consultório 209 - souza marquês </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="pastahigienizacao2/aderson - 0843 -almoxarifado.jpeg" target="_blank">
+                        <img src="pastahigienizacao2/aderson - 0843 -almoxarifado.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: 0843 - almoxarifado - Aderson fernandes </figcaption>
+                </figure>
+
+
+            <figure class="foto">
+                    <a href="pastahigienizacao2/aderson 0828 curativos.jpeg" target="_blank">
+                        <img src="pastahigienizacao2/aderson 0828 curativos.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode: 0828 - curativos - Aderson fernandes </figcaption>
+                </figure>
+
+
+
+
+        
+        </section>
+    </div>
+    
+    
+        <br>
+
+    <div>
+    
+            <br>
+            <h1>higiênização mês de outubro  <date>01/10 a 31/10/2026</date></h1>
+            <br>
+             <p>ROTA (1) TOTAL DE APARELHOS: 241</p><br>
+             <p>higienização mês de outubro total: 06</p>
+
+            <section class="galeria">
+
+                <figure class="foto">
+                    <a href="higieneoutubro/souza 1524 observação clinica.jpeg" target="_blank">
+                        <img src="higieneoutubro/souza 1524 observação clinica.jpeg" alt="atualizando!!!">
+                    </a>
+                    <figcaption> 1524 - observação clínica - souza marquês </figcaption>
+                </figure>
+
+                <figure class="foto">
+                    <a href="higieneoutubro/souza 1541 procedimentos.jpeg" target="_blank">
+                        <img src="higieneoutubro/souza 1541 procedimentos.jpeg" alt="atualizando!!!">
+                    </a>
+                    <figcaption> 1541 - procedimentos - souza marquês </figcaption>
+                </figure>
+
+                 <figure class="foto">
+                    <a href="higieneoutubro/mario olinto 1942 corredor procedimentos.jpeg " target="_blank">
+                        <img src="higieneoutubro/mario olinto 1942 corredor procedimentos.jpeg" alt="Foto do equipamento">
+                    </a>
+                    <figcaption>qrcode:1942 - corredor procedimentos - mario olinto </figcaption>
+                </figure>
+
+                <figure class="foto">
+                <a href="pastahigienizacao2/souza 1585 consultorio 209.jpeg" target="_blank">
+                    <img src="pastahigienizacao2/souza 1585 consultorio 209.jpeg" alt="atualizando!!!">
+                </a>
+                <figcaption>qrcode: 1585 - consultório 209 - souza marquês </figcaption>
+                </figure>
+
+            
+                <figure class="foto">
+                <a href="pastahigienizacao2/souza 1510 acolhimento oftalmo.jpeg" target="_blank">
+                    <img src="pastahigienizacao2/souza 1510 acolhimento oftalmo.jpeg" alt="atualizando!!!">
+                </a>
+                <figcaption>qrcode: 1510 - acolhimento oftalmológico - souza marquês </figcaption>
+                </figure>
+
+                 <figure class="foto">
+                <a href="pastahigienizacao2/carlos nery 5030 copa.jpeg" target="_blank">
+                    <img src="pastahigienizacao2/carlos nery 5030 copa.jpeg" alt="atualizando!!!">
+                </a>
+                <figcaption>qrcode: 5030 - copa - carlos nery </figcaption>
+                </figure>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+            
+            
+            
+    </div>
+
+</body>
+<script>
+      const pesquisa = document.getElementById("pesquisa");
+    const fotos = document.querySelectorAll(".foto");
+
+    pesquisa.addEventListener("input", function () {
+
+        const termo = this.value
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        fotos.forEach(function (foto) {
+
+            const texto = foto.textContent
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+
+            if (texto.includes(termo)) {
+                foto.style.display = "";
+            } else {
+                foto.style.display = "none";
+            }
+
+        });
+
+    });
+    
+
+</script>
+</html>
